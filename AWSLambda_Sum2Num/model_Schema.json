@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Sum of two num",
+    "type": "object",
+    "properties": {
+        "first_num":{"type":"number"},
+        "second_num":{"type":"number"}
+        
+    },
+    "required": ["first_num", "second_num"]
+}
