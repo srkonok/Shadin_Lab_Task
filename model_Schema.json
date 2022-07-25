@@ -3,8 +3,8 @@
     "title": "Sum of two num",
     "type": "object",
     "properties": {
-        "first_num":{"type":"integer"},
-        "second_num":{"type":"integer"}
+        "first_num":{"type":"number"},
+        "second_num":{"type":"number"}
         
     },
     "required": ["first_num", "second_num"]
