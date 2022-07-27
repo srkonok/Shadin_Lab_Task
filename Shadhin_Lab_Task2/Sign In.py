@@ -5,7 +5,7 @@ import json
 
 
 def lambda_handler(event, context):
-    authtoken=""
+    auth_token=""
  #DB connection
     try:
         mydb = mysql.connector.connect(
