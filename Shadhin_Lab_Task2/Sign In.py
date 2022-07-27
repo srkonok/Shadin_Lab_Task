@@ -20,12 +20,15 @@ def lambda_handler(event, context):
         this_email = body['email']
         this_password = body['password']
         this_email = (email,)
+        
         findUser = "SELECT * FROM user WHERE email = %s"
         mycursor = mydb.cursor()
         mycursor.execute(findUser, this_email)
         user = mycursor.fetchone()
+        
         if user:
             if this_password == user[2]:
+                #token generation
                 auth_token = str(uuid.uuid1())
                 mycursor.execute('INSERT INTO Token (email, token) values(%s, %s)', (user[1], auth_token,))
                 mydb.commit()
