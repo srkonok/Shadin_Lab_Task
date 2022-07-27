@@ -5,7 +5,7 @@ import json
 
 
 def lambda_handler(event, context):
-    token=""
+    authtoken=""
  #DB connection
     try:
         mydb = mysql.connector.connect(
@@ -27,8 +27,7 @@ def lambda_handler(event, context):
         if user:
             if this_password == user[2]:
                 auth_token = str(uuid.uuid1())
-                mycursor.execute(
-                    'INSERT INTO Token (email, token) values(%s, %s)', (user[1], auth_token,))
+                mycursor.execute('INSERT INTO Token (email, token) values(%s, %s)', (user[1], auth_token,))
                 mydb.commit()
                 message = "Successfully Sign in and Token Generated!!"
             else:
@@ -37,16 +36,11 @@ def lambda_handler(event, context):
             message = "User's not registered!!"
     except:
         message = "Sign in unsuccessful!"
-    if token:
         data = {
             "Message": message,
             "Token": auth_token
         }
-    else:
-        data = {
-            "Message": message
-        }
-
+    
     return{
         'statusCode': 200,
         'body': json.dumps(data)
