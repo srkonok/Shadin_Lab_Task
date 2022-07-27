@@ -8,7 +8,7 @@ def lambda_handler(event, context):
         # DB connection
         mydb = mysql.connector.connect(
             host="remotemysql.com",
-            port="3306",
+            port="3316",
             user="1eQAzD8RMj",
             passwd="R9Uin6Sq5V",
             database="1eQAzD8RMj"
@@ -23,12 +23,10 @@ def lambda_handler(event, context):
         mycursor = mydb.cursor()
         mycursor.execute(sql, (this_email,))
         user = mycursor.fetchone()
-
         if user:
             message = "Already registered in the database."
         else:
-            mycursor.execute('insert into user (name, email, password) values(%s, %s, %s)', (
-                this_name, this_email, this_password,))
+            mycursor.execute('INSERT  user (name, email, password) values(%s, %s, %s)', (this_name, this_email, this_password,))
             mydb.commit()
             message = "Congratulation! Successfully Sign Up!! 😃 "
             message = "User's signup failed!!"
