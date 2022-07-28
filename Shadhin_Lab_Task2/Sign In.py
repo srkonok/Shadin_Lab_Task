@@ -21,9 +21,8 @@ def lambda_handler(event, context):
         this_password = body['password']
         this_email = (email,)
         
-        findUser = "SELECT * FROM user WHERE email = %s"
         mycursor = mydb.cursor()
-        mycursor.execute(findUser, this_email)
+        mycursor.execute(SELECT * FROM user WHERE email = %s, (this_email,)
         user = mycursor.fetchone()
         
         if user:
