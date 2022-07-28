@@ -19,10 +19,10 @@ def lambda_handler(event, context):
         body = json.loads(event['body'])
         this_email = body['email']
         this_password = body['password']
-        this_email = (email,)
+        this_email = (email)
         
         mycursor = mydb.cursor()
-        mycursor.execute(SELECT * FROM user WHERE email = %s, (this_email,)
+        mycursor.execute(SELECT * FROM user WHERE email = %s, (this_email)
         user = mycursor.fetchone()
         
         if user:
