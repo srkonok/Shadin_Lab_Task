@@ -6,7 +6,7 @@ def lambda_handler(event, context):
     token=""
     try:
         dbmy=mc.confunc()
-	  mycursor = dbmy.cursor()	
+	mycursor = dbmy.cursor()	
         body = json.loads(event['body'])
 
         this_email = body['email']
