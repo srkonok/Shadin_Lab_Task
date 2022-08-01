@@ -24,6 +24,7 @@ def lambda_handler(event, context):
                 message = "Successfully Sign in and Token Generated!!"
             else:
                 message = "Invalid Password!!"
+		token="Can't generate!!"
         else:
             message = "User's not registered!!"
         
