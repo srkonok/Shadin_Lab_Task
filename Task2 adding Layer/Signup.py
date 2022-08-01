@@ -14,7 +14,7 @@ def lambda_handler(event, context):
         user= mycursor.fetchone()
         
         if (user):
-            message = "This email is already registered!"
+            message = "already registered!"
         else:
             mycursor.execute('insert into user (name, email, password) values(%s, %s, %s)', (this_name,this_email,this_password,))
             dbmy.commit()
