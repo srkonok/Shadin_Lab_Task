@@ -26,7 +26,9 @@ def lambda_handler(event, context):
             password = user[2]
             print(password)
             if hash_pass == password:
-                token=jwt.encode({'Auth':'Allow',"exp": datetime.datetime.utcnow()+ datetime.timedelta(seconds=2)}, "secret", algorithm="HS256")
+                
+                token=jwt.encode({'Auth':'Allow',"exp": datetime.datetime.utcnow()+ datetime.timedelta(hours=2)}, "secret", algorithm="HS256")
+                
                 mycursor.execute('insert into Token (email, token) values(%s, %s)', (email,token,))
                 dbmy.commit()
                 message = "Successfully Sign in and Token Generated!!"
