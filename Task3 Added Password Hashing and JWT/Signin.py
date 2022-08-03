@@ -11,10 +11,14 @@ def lambda_handler(event, context):
         dbmy=mc.confunc()
 
         body = json.loads(event['body'])
-        data=User(**body)
+        
 
-        this_email = data.email
-        this_password = data.password
+        try :
+            data=User(**body)
+            this_email = data.email
+            this_password = data.password
+        except ValidationError as e:
+            print(e.json())
       
         hash_pass=hashlib.md5(this_password.encode('utf-8')).hexdigest()
         print(hash_pass)
