@@ -2,14 +2,26 @@ import json
 import mycon as mc
 import hashlib,hmac
 import jwt
+from ParserUser import User
+
+
 
 def lambda_handler(event, context):
     try:
         dbmy=mc.confunc()
+        
         body = json.loads(event['body'])
-        this_name = body['name']
-        this_email = body['email']
-        this_password = body['password']
+        data=User(**body)
+        this_name = data.name
+        this_email = data.email
+        this_password = data.password
+        print(body["password"])
+        print(this_password)
+        
+        if(body["password"]==this_password):
+            print("Yes!")
+        else:
+            print("No")# result "N"
         
         hash_password=hashlib.md5(this_password.encode('utf-8')).hexdigest()
         
