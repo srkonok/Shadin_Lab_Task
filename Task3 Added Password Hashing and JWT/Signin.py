@@ -3,6 +3,7 @@ import mycon as mc
 import datetime,time
 import hashlib,hmac
 import jwt
+from ParserUser import User
 
 def lambda_handler(event, context):
     token=""
@@ -10,10 +11,11 @@ def lambda_handler(event, context):
         dbmy=mc.confunc()
 
         body = json.loads(event['body'])
+        data=User(**body)
 
-        this_email = body['email']
-        this_password = body['password']
-        
+        this_email = data.email
+        this_password = data.password
+      
         hash_pass=hashlib.md5(this_password.encode('utf-8')).hexdigest()
         print(hash_pass)
         
@@ -26,9 +28,7 @@ def lambda_handler(event, context):
             password = user[2]
             print(password)
             if hash_pass == password:
-                
-                token=jwt.encode({'Auth':'Allow',"exp": datetime.datetime.utcnow()+ datetime.timedelta(hours=2)}, "secret", algorithm="HS256")
-                
+                token=jwt.encode({'Auth':'Allow',"exp": datetime.datetime.utcnow()+ datetime.timedelta(seconds=2)}, "secret", algorithm="HS256")
                 mycursor.execute('insert into Token (email, token) values(%s, %s)', (email,token,))
                 dbmy.commit()
                 message = "Successfully Sign in and Token Generated!!"
