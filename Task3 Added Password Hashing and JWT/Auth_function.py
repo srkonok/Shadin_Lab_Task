@@ -17,7 +17,7 @@ def lambda_handler(event, context):
     auth = 'Deny'
     try:
         encoded_token=data[1]
-        decoded_token=jwt.decode(encoded_token, "secret", leeway=datetime.timedelta(seconds=5), algorithms=["HS256"])
+        decoded_token=jwt.decode(encoded_token, "secret", leeway=datetime.timedelta(minutes=5), algorithms=["HS256"])
         auth = decoded_token['Auth']
     except jwt.ExpiredSignatureError:
         token=data[1]
