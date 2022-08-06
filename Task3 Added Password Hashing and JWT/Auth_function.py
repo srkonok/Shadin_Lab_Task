@@ -20,8 +20,8 @@ def lambda_handler(event, context):
         decoded_token=jwt.decode(encoded_token, "secret", leeway=datetime.timedelta(minutes=5), algorithms=["HS256"])
         auth = decoded_token['Auth']
     except jwt.ExpiredSignatureError:
-        token=data[1]
-        mycursor.execute("delete from Token where token = %s", (token,))
+        mycursor.execute("delete from Token where token = %s", (this_token,))
+        dbmy.commit()
 
     auth_Response = {
         "principalId": this_token,
