@@ -31,9 +31,9 @@ def lambda_handler(event, context):
                 except Exception as e:
                     message="Not included in Database"
         except ValidationError as e:
-            jsonf=e.json()
-            print(jsonf)
-            message=jsonf
+            message =e.json()
+            print(message)
+      
        
     except Exception as e:
         message = "Problem occured"
