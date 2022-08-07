@@ -22,11 +22,11 @@ class User(BaseModel):
         return v
 
 
-userDetails = {
-    "name": "Konok",
-    "email": "srkonok20@gmail.com",
-    "password": "12345678"
-}
+#userDetails = {
+#   "name": "Konok",
+#   "email": "srkonok20@gmail.com",
+#    "password": "12345678"
+#}
 # try:
 #     user = User(**userDetails)
 #     this_name = user.name
