@@ -17,22 +17,15 @@ class User(BaseModel):
 
     @validator("password")
     def pass_must_be_8_digit(cls, v):
-        if(len(v) != 8):
+        if(len(v) < 8 ):
             raise ValueError("Password must be 8 digit!")
         return v
 
 
-#userDetails = {
-#   "name": "Konok",
-#   "email": "srkonok20@gmail.com",
-#    "password": "12345678"
-#}
-# try:
-#     user = User(**userDetails)
-#     this_name = user.name
-#     this_email = user.email
-#     this_password = user.password
-#     print(user)
-# except ValidationError as e:
-#     print(e)    
-
+# userDetails = {
+#     "name": "Konok",
+#     "email": "srkonok20@gmail.com",
+#     "password": "12345678"
+# }
+# user = User(**userDetails)
+# print(user)
