@@ -40,9 +40,9 @@ def lambda_handler(event, context):
                 message = "User's not registered!!"
             
         except ValidationError as e:
-            jsonf=e.json()
-            print(jsonf)
-            message=jsonf
+            message =e.json()
+            print(message)
+      
       
     except :
         message = "Can't signin!!"
