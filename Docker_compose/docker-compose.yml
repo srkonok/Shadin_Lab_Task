@@ -3,7 +3,7 @@ services:
     build: ./python/
     command: sh -c "sleep 10s ; python3 ./hello_world.py"
     depends_on:
-      - mysql
+      - proxysql
   
   mysql:
     build: ./mysql/
@@ -13,3 +13,16 @@ services:
       MYSQL_ROOT_PASSWORD: 'root'
     ports:
       - '3306:3306'
+
+  proxysql:
+    build: ./proxysql/
+    image: proxysql/proxysql
+    restart: always
+    container_name: proxysql
+    command: tail -F anything
+    volumes:
+      - ./proxysql.cnf:/etc/proxysql.cnf
+    ports:
+      - 6032:6032
+    depends_on:
+      - mysql
