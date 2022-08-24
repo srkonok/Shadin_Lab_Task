@@ -1,7 +1,8 @@
 import mysql.connector
+import MySQLdb as mdb
 
-connection = mysql.connector.connect(
-    user='root', password='root', host='mysql', port="3306", database="db"
+connection = mdb.connect(
+    user='monitor', password='monitor', host='proxysql', port="6033", database="db"
 )
 if connection:
     print("DB Connected!")
