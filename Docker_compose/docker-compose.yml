@@ -28,5 +28,6 @@ services:
       - ./proxysql/proxysql.cnf:/etc/proxysql.cnf
     ports:
       - '6032:6032'
+      - '6033:6033'
     depends_on:
       - mysql
