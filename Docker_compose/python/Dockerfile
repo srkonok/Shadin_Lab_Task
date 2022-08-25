@@ -1,6 +1,6 @@
 FROM python:3.9
 
-RUN pip install mysql-connector-python && pip install MySQL-python; pip install mysqlclient 
+RUN pip install mysql-connector-python 
 
 WORKDIR /usr/app/src
 
