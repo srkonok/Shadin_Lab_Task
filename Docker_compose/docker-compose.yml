@@ -4,6 +4,8 @@ services:
     command: sh -c "sleep 10s ; python3 ./hello_world.py"
     depends_on:
       - proxysql
+    networks:
+      - mysql_cluster_net 
 
   mysql:
     build: ./mysql/
@@ -15,6 +17,8 @@ services:
       - ./mysql/my.cnf:/etc/mysql/my.cnf
       - ./mysql/data:/var/lib/mysql
       - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - mysql_cluster_net     
     ports:
       - '3306:3306'
 
@@ -29,5 +33,11 @@ services:
     ports:
       - '6032:6032'
       - '6033:6033'
+    networks:
+      - mysql_cluster_net 
     depends_on:
       - mysql
+
+networks:
+  mysql_cluster_net:
+    driver: bridge

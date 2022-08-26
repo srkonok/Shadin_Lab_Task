@@ -1,40 +1,9 @@
 datadir="/var/lib/proxysql"
 
-admin_variables=
-{
-    admin_credentials="admin:admin;radmin:radmin"
-    mysql_ifaces="0.0.0.0:6032"
-}
-
-mysql_variables=
-{
-    threads=4
-    max_connections=2048
-    default_query_delay=0
-    default_query_timeout=36000000
-    have_compress=true
-    poll_timeout=2000
-    interfaces="0.0.0.0:6033"
-    default_schema="information_schema"
-    stacksize=1048576
-    server_version="5.5.30"
-    connect_timeout_server=3000
-    monitor_username="monitor"
-    monitor_password="monitor"
-    monitor_history=600000
-    monitor_connect_interval=60000
-    monitor_ping_interval=10000
-    monitor_read_only_interval=1500
-    monitor_read_only_timeout=500
-    ping_interval_server_msec=120000
-    ping_timeout_server=500
-    commands_stats=true
-    sesdatadir="/var/lib/proxysql"
-
 # ProxySQL Admin Configuration 
 admin_variables=
 {
-    admin_credentials="admin:admin;admin2:pass2"
+    admin_credentials="admin:admin;radmin:radmin"
     mysql_ifaces="0.0.0.0:6032"
     refresh_interval=2000
     stats_credentials="stats:admin"
@@ -69,7 +38,6 @@ mysql_variables=
 
 # Host Group 10 = Master Group for Write
 # Host Group 20 = Slave Group for Read
-
 mysql_replication_hostgroups =
 (
     { writer_hostgroup=10 , reader_hostgroup=20 , comment="host groups" }
@@ -79,8 +47,7 @@ mysql_replication_hostgroups =
 # replication_lag = 5 mean if any slave replica is unable to catch the the master change event within 5 sec, proxySQL will mark it as SHUNNED (kind of Banned)
 mysql_servers =
 (
-    { address="mysql" , port=3306 , hostgroup=10, max_connections=100 , max_replication_lag = 5 },
-)
+    { address="mysql" , port=3306 , hostgroup=10, max_connections=100 , max_replication_lag = 5 }
 
 # The SQL Awareness Rules 
 mysql_query_rules =
@@ -90,13 +57,6 @@ mysql_query_rules =
         active=1
         match_pattern="^SELECT .* FOR UPDATE"
         destination_hostgroup=10
-        apply=1
-    },
-    {
-        rule_id=200
-        active=1
-        match_pattern="^SELECT .*"
-        destination_hostgroup=20
         apply=1
     },
     {
@@ -111,6 +71,4 @@ mysql_query_rules =
 mysql_users =
 (
     { username = "root" , password = "root" , default_hostgroup = 10 , active = 1 }
-)sions_sort=true
-    connect_retries_on_failure=10
-}
+)
