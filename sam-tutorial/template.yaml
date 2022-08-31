@@ -1,0 +1,55 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: |
+  "SAM Template for sam-tutorial"
+
+Metadata:
+
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label: {default: 'Optional parameters'}
+        Parameters:
+          - ProjectName
+
+
+Parameters: 
+
+  ProjectName:
+    Type: String
+    Description: 'Name of the project'
+    Default: 'sam-tutorial'
+
+
+Resources:
+  SnsTopicSamTutorial:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: !Sub '${ProjectName}'
+      Subscription:
+        - Protocol: sqs
+          Endpoint: !GetAtt SqsQueueSamTutorial.Arn
+      Tags:
+        - Key: Name
+          Value: !Sub '${ProjectName}'
+
+  SqsQueueSamTutorial:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: !Sub '${ProjectName}'
+      Tags:
+        - Key: Name
+          Value: !Sub '${ProjectName}'
+
+  LambdaSamTutorial:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub '${ProjectName}'
+      CodeUri: application/
+      Handler: tutorial.lambda.handler
+      Runtime: python3.9
+      Events:
+        SqsTrigger:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt SqsQueueSamTutorial.Arn
