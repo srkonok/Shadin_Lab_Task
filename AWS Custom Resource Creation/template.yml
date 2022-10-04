@@ -1,0 +1,51 @@
+AWSTemplateFormatVersion: 2010-09-09
+Transform: AWS::Serverless-2016-10-31
+Description: 
+  SES template with jinja2
+
+Resources:
+  CustomResourceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+            - lambda.amazonaws.com
+          Action:
+          - sts:AssumeRole
+      Path: "/"
+      ManagedPolicyArns:
+        - arn:aws:iam::092792162103:policy/ses-allow-all
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+
+  SESTemplate:
+    Type: Custom::LoadLambda
+    Properties:
+      ServiceToken: !GetAtt CustomResource.Arn
+      Resource: SESTemplate
+      
+  SESTemplateLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: jinja2-layer
+      ContentUri: dependencies/
+      CompatibleRuntimes:
+        - python3.7
+        - python3.8
+        - python3.9
+
+  CustomResource:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      MemorySize: 128
+      Timeout: 3
+      Role: !GetAtt CustomResourceRole.Arn
+      CodeUri: src/
+      Description: Lambda Function that imports jinja2 and has the jinja2 layer
+      Layers:
+        - !Ref SESTemplateLayer
