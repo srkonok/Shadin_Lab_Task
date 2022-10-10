@@ -1,0 +1,6 @@
+{
+    "lms_regular_signup_template": {
+        "subject": "Please verify your email",
+        "text": "Dear {{name}},Thank you for registering with us. Please click on the link below to verify your account.{{link}}Link is valid for {{valid_for_mins}} minutes.Thank you, Shadhin Lab Team"
+    }
+}

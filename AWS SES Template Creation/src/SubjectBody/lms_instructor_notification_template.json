@@ -1,0 +1,6 @@
+{
+    "lms_instructor_notification_template": {
+        "subject": "Instructor Role {{action}}",
+        "text": "This is Text part "
+    }
+}

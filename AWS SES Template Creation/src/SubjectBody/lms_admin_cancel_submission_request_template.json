@@ -1,0 +1,6 @@
+{
+    "lms_admin_cancel_submission_request_template": {
+        "subject": "Admin Cancel Submission Request",
+        "text": "This is Text part "
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "lms_course_creation_notification_template": {
+        "subject": "Course Creation Notification ",
+        "text": "This is Text part"
+    }
+}

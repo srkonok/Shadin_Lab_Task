@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="x-apple-disable-message-reformatting">
+    <title></title>
+
+    <style>
+        table,
+        td,
+        div,
+        h1,
+        p {
+            font-family: Arial, sans-serif;
+        }
+
+
+        .nav-socials>a {
+            padding: 5px;
+        }
+
+        .auto-reply>p {
+            color: #a4a4a4;
+        }
+
+        .auto-reply a,
+        .auto-reply a:hover,
+        .auto-reply a:visited {
+            color: #a4a4a4;
+            text-decoration: none !important;
+        }
+    </style>
+</head>
+
+<body style="margin:0;padding:0;">
+    <table role="presentation" style="width:100%;border-collapse:collapse;border-spacing:0;background:#ffffff;">
+        <tr>
+            <td align="center" style="padding:0;">
+                <table role="presentation"
+                    style="width:602px;border-collapse:collapse;border:1px solid #cccccc;border-spacing:0;text-align:left;">
+          <!-- header -->
+          {% include 'header.html'%}
+                    <tr>
+                        <td style="padding:40px 10px 40px 10px;">
+
+                            Hello <b>{{name}}</b>,
+                            <br /><br />
+                            Your course has been approved. Please find the course details below:
+                            <br> Course ID: {{course_id}}
+                            <br> Course name: {{course_name}}
+                            <br> Goto course <a href="{{course_url}}" target="_blank">{{course_url}}</a>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="nav-socials" style="padding:20px 0px 20px 0px; background:#d1d1d1;">
+                            <a href="https://onestoplms.com" target="_blank"><img
+                                    src="https://media-conversion-stack-source-bucket-development.s3.us-west-2.amazonaws.com/public/mail_images/facebook.png"
+                                    alt="facebook"></a>
+                            <a href="https://onestoplms.com" target="_blank"><img
+                                    src="https://media-conversion-stack-source-bucket-development.s3.us-west-2.amazonaws.com/public/mail_images/twitter.png"
+                                    alt="twitter"></a>
+                            <a href="https://onestoplms.com" target="_blank"><img
+                                    src="https://media-conversion-stack-source-bucket-development.s3.us-west-2.amazonaws.com/public/mail_images/linkedin.png"
+                                    alt="linkedin"></a>
+                            <a href="https://onestoplms.com" target="_blank"><img
+                                    src="https://media-conversion-stack-source-bucket-development.s3.us-west-2.amazonaws.com/public/mail_images/youtube.png"
+                                    alt="youtube"></a>
+
+
+                        </td>
+                    </tr>
+          <!-- footer -->
+          {% include 'footer.html'%}
+                    <tr>
+                        <td align="center" style="padding:5px 0px 5px 0px;">
+                            Copyright &copy; 2022 | Shadhin Lab, All rights reserved
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

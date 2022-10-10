@@ -1,0 +1,6 @@
+{
+    "lms_block_notification_template": {
+        "subject": "Account Block Notification",
+        "text": "This is Text part"
+    }
+}

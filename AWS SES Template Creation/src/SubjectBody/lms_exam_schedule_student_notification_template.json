@@ -1,0 +1,6 @@
+{
+    "lms_exam_schedule_student_notification_template": {
+        "subject": "Exam Schedule Student Notification ",
+        "text": "Hello {{name}},"
+    }
+}

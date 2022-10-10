@@ -1,0 +1,6 @@
+{
+    "lms_admin_signup_template": {
+        "subject": "Admin Signup ",
+        "text": "Hello {{name}},"
+    }
+}

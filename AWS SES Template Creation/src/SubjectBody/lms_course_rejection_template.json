@@ -1,0 +1,6 @@
+{
+    "lms_course_rejection_template": {
+        "subject": "Course Rejection ",
+        "text": "This is Text part"
+    }
+}

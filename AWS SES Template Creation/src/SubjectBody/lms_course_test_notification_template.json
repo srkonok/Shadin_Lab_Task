@@ -1,0 +1,6 @@
+{
+    "lms_course_test_notification_template": {
+        "subject": "Course Test Notification",
+        "text": "This is Text part"
+    }
+}

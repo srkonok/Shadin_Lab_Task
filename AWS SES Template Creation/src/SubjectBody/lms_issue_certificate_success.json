@@ -1,0 +1,7 @@
+{
+    "lms_issue_certificate_success": {
+        "subject": "Certificate Issued ",
+        "text": "Dear {{name}},
+        /n"
+    }
+}

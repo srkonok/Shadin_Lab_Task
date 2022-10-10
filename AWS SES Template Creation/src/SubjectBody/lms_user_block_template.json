@@ -1,0 +1,6 @@
+{
+    "lms_user_block_template": {
+        "subject": "User {{action}} ",
+        "text": "Hello {{name}}"
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "lms_contact_us_admin": {
+        "subject": "Contact Us: {{subject}} ",
+        "text": "Name: {{name}}Email: {{email}}Phone: {{phone}}Body: {{message}}"
+    }
+}

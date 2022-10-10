@@ -1,0 +1,6 @@
+{
+    "lms_course_approval_notification_template": {
+        "subject": "Course Approval Notification",
+        "text": "This is Text part"
+    }
+}

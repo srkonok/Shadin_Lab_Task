@@ -1,0 +1,7 @@
+{
+    "admin_add_user": {
+        "subject": "Welcome Admin To Shdahin Lab",
+        "text": "Hello {{name}},  
+        Welcome to Shadhin Lab"
+    }
+}

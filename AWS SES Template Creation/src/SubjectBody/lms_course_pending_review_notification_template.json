@@ -1,0 +1,6 @@
+{
+    "lms_course_pending_review_notification_template": {
+        "subject": "Course Pending Review Notification ",
+        "text": "This is Text part"
+    }
+}
